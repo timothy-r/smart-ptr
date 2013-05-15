@@ -4,16 +4,16 @@
 class Counter
 {
     private:
-        int counter;
+        int count;
 
     public:
-        int AddRef()
+        int inc()
         {
             return ++count;
         }
 
-        int Release()
+        int dec()
         {
             return --count;
         }
-}
+};

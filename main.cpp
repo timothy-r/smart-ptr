@@ -9,8 +9,13 @@ int main()
         SmartPtr<Person> q = p;
         q->Display();
     }
-    // ERROR Person has been deleted
-    //p->Display();
+
+    SmartPtr<Person> r(new Person("Rodger", 7));
+    r->Display();
+
+    r = p;
+    r->Display();
+
     return 0;
 }
 
