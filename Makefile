@@ -1,16 +1,21 @@
+APP = ptr
+OBJS = person.o counter.o main.o
 CC = g++
+DEBUG = -g
+CFLAGS = -Wall -c $(DEBUG)
+LFLAGS = -Wall $(DEBUG)
 
-all: person.o counter.o main.o
-	$(CC) -Wall main.o person.o counter.o -o ptr
+all: $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) -o $(APP)
 
 main.o: main.cpp person.h counter.h
-	$(CC) -Wall -c main.cpp
+	$(CC) $(CFLAGS) main.cpp
 
 person.o: person.cpp person.h
-	$(CC) -Wall -c person.cpp
+	$(CC) $(CFLAGS) person.cpp
 
 counter.o: counter.h counter.cpp
-	$(CC) -Wall -c counter.cpp
+	$(CC) $(CFLAGS) counter.cpp
 
 clean:
-	rm -f *.o *.out
+	rm -f *.o *.out $(APP)
