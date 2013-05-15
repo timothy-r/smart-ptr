@@ -1,22 +1,31 @@
 #include "smart-ptr.cpp"
 #include "person.cpp"
 
+void showPerson(const Person &p)
+{
+    p.Display();
+}
+
 int main()
 {
     SmartPtr<Person> p(new Person("Tim", 47));
-    p->Display();
+    showPerson(*p);
+
+    //p->Display();
     {
         SmartPtr<Person> q = p;
-        q->Display();
+        showPerson(*q);
+        //q->Display();
     }
 
     SmartPtr<Person> r(new Person("Rodger", 7));
-    r->Display();
+    //r->Display();
+    showPerson(*r);
 
     r = p;
-    r->Display();
+    showPerson(*r);
+    //r->Display();
 
     return 0;
 }
-
 

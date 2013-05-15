@@ -2,6 +2,8 @@
  * a smart pointer template class
  */
 #include "counter.cpp"
+#include <iostream>
+using namespace std;
 
 template < typename T > class SmartPtr
 {
@@ -43,6 +45,7 @@ template < typename T > class SmartPtr
 
                 // delete existing pointers if this is the last reference to them
                 if (reference->dec() == 0){
+                    cout << "delete ptr " << endl;
                     delete ptr;
                     delete reference;
                 }
@@ -62,6 +65,7 @@ template < typename T > class SmartPtr
         ~SmartPtr()
         {
             if (reference->dec() == 0) {
+                cout << "delete ptr " << endl;
                 delete ptr;
                 delete reference;
             }

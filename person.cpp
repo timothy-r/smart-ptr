@@ -21,7 +21,7 @@ class Person
         {
         }
 
-        void Display()
+        void Display() const
         {
             cout << "Name = " << name << " Age = " << age << endl;
         }
