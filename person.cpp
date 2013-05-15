@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Person
@@ -6,14 +7,14 @@ class Person
     protected:
 
     int age;
-    char *name;
+    const string& name;
 
     public:
         Person(): name(0), age(0)
         {
         }
 
-        Person(char* name, int age): name(name), age(age)
+        Person(const string& name, int age): name(name), age(age)
         {
         }
 
