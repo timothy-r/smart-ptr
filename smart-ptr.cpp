@@ -2,6 +2,8 @@
  * a smart pointer template class
  */
 #include "counter.cpp"
+
+// debugging
 #include <iostream>
 using namespace std;
 
@@ -12,28 +14,33 @@ template < typename T > class SmartPtr
          * the pointer being wrapped
          */
         T* ptr;
-
-        Counter* reference;
+        
+        /**
+         * Counter used to maintain a reference count
+         * to this ptr instance
+         */
+        Counter* ref;
 
     public:
-        SmartPtr() : ptr(0), reference(0)
+        SmartPtr() : ptr(0), ref(0)
         {
-            reference = new Counter;
-            reference->inc();
+            ref = new Counter;
+            ref->inc();
         }
 
-        SmartPtr(T* value) : ptr(value), reference(0)
+        SmartPtr(T* value) : ptr(value), ref(0)
         {
-            reference = new Counter;
-            reference->inc();
+            ref = new Counter;
+            ref->inc();
         }
         
         /**
          * Copy constructor
+         * keep a reference to the pointer and increment the shared reference counter
          */
-        SmartPtr(const SmartPtr<T>& p) : ptr(p.ptr), reference(p.reference)
+        SmartPtr(const SmartPtr<T>& p) : ptr(p.ptr), ref(p.ref)
         {
-            reference->inc();
+            ref->inc();
         }
 
         /**
@@ -43,17 +50,17 @@ template < typename T > class SmartPtr
         {
             if (this != &p){
 
-                // delete existing pointers if this is the last reference to them
-                if (reference->dec() == 0){
+                // delete the existing pointer if this is the last reference to them
+                if (ref->dec() == 0){
                     cout << "delete ptr " << endl;
                     delete ptr;
-                    delete reference;
+                    delete ref;
                 }
 
-                // copy the new pointers and increment ref count
+                // keep a reference to the pointer and increment the shared reference counter
                 ptr = p.ptr;
-                reference = p.reference;
-                reference->inc();
+                ref = p.ref;
+                ref->inc();
             }
             return *this;
         }
@@ -64,10 +71,10 @@ template < typename T > class SmartPtr
          */
         ~SmartPtr()
         {
-            if (reference->dec() == 0) {
+            if (ref->dec() == 0) {
                 cout << "delete ptr " << endl;
                 delete ptr;
-                delete reference;
+                delete ref;
             }
         }
         
