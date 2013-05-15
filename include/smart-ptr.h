@@ -3,10 +3,6 @@
  */
 #include "counter.h"
 
-// debugging
-#include <iostream>
-using namespace std;
-
 template < typename T > class SmartPtr
 {
     private:
@@ -52,7 +48,6 @@ template < typename T > class SmartPtr
 
                 // delete the existing pointer if this is the last reference to them
                 if (ref->dec() == 0){
-                    cout << "delete ptr " << endl;
                     delete ptr;
                     delete ref;
                 }
@@ -72,7 +67,6 @@ template < typename T > class SmartPtr
         ~SmartPtr()
         {
             if (ref->dec() == 0) {
-                cout << "delete ptr " << endl;
                 delete ptr;
                 delete ref;
             }
