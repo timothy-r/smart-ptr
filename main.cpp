@@ -1,5 +1,5 @@
-#include "include/smart-ptr.h"
-#include "include/person.h"
+#include "smart-ptr.h"
+#include "person.h"
 
 void showPerson(const Person &p)
 {

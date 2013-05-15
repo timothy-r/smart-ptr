@@ -6,18 +6,19 @@ CC = g++
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG)
+IFLAGS = -I include/
 
 all: $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) -o $(APP)
 
 main.o: main.cpp include/person.h include/counter.h
-	$(CC) $(CFLAGS) main.cpp
+	$(CC) $(CFLAGS) $(IFLAGS) main.cpp
 
 person.o: src/person.cpp include/person.h
-	$(CC) $(CFLAGS) src/person.cpp
+	$(CC) $(CFLAGS) $(IFLAGS) src/person.cpp
 
 counter.o: include/counter.h src/counter.cpp
-	$(CC) $(CFLAGS) src/counter.cpp
+	$(CC) $(CFLAGS) $(IFLAGS) src/counter.cpp
 
 clean:
 	rm -f *.o *.out $(APP)
