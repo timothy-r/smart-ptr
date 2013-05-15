@@ -6,8 +6,8 @@ class Person
 {
     protected:
 
-    int age;
-    const string& name;
+        const string& name;
+        int age;
 
     public:
         Person();

@@ -1,7 +1,7 @@
 /**
  * a smart pointer template class
  */
-#include "counter.cpp"
+#include "counter.h"
 
 // debugging
 #include <iostream>
