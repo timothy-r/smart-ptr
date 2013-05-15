@@ -1,6 +1,8 @@
 APP = ptr
 OBJS = person.o counter.o main.o
 CC = g++
+
+# change to empty to not add debug symbols 
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG)
