@@ -1,4 +1,4 @@
-#include "counter.h"
+#include "../include/counter.h"
 
 /**
  * increase counter by 1 and return new value

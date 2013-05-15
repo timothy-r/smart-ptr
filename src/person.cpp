@@ -1,4 +1,4 @@
-#include "person.h"
+#include "../include/person.h"
 
 Person::Person(): name(0), age(0){}
 
