@@ -1,19 +1,17 @@
+#include "counter.h"
+
 /**
- * a reference counting class
+ * increase counter by 1 and return new value
  */
-class Counter
+int Counter::inc()
 {
-    private:
-        int count;
+    return ++count;
+}
 
-    public:
-        int inc()
-        {
-            return ++count;
-        }
-
-        int dec()
-        {
-            return --count;
-        }
-};
+/**
+ * decrease counter by 1 and return new value
+ */
+int Counter::dec()
+{
+    return --count;
+}
