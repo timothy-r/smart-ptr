@@ -22,7 +22,7 @@ counter.o: include/counter.h src/counter.cpp init
 	@$(CC) $(CFLAGS) $(IFLAGS) src/counter.cpp -o objs/counter.o
 
 init:
-	#@mkdir objs/
+	@[ -d objs ] || mkdir objs/
 
 clean:
 	@rm -f objs/*.o *.out $(APP)
